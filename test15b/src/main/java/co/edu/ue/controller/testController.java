@@ -23,7 +23,7 @@ public class testController {
 		return "Hola estudiantes de la 15B";
 	}
 	@GetMapping(value="/test_ci")
-	public String hello() {
+	public String test() {
 		return "Hola desde Ci";
 	}
 	
