@@ -1,0 +1,38 @@
+services:
+  mysq1-db:
+    image: mysql:8.0
+    container_name: mysql-master
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: test
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./mysql/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+      interval: 5s
+      start_period: 40s
+
+  backend:
+    build: ./test15b
+    container_name: backend-springboot
+    ports:
+      - "8091:8080"
+    depends_on:
+      mysq1-db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysq1-db:3306/test?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 12345678
+
+  frontend:
+    build: ./frontend_test
+    container_name: frontend-nativo
+    ports:
+      - "8082:80"
+    depends_on:
+      - backend
