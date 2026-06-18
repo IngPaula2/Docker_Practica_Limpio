@@ -22,6 +22,10 @@ public class testController {
 	public String hello() {
 		return "Hola estudiantes de la 15B";
 	}
+	@GetMapping(value="/test_ci")
+	public String hello() {
+		return "Hola desde Ci";
+	}
 	
 	@GetMapping(value="/sumar")
     public int sumar(

@@ -6,8 +6,12 @@ on:
       - main
 
 jobs:
-  build:
+  build-backend:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: test15b
 
     steps:
       - name: Descargar codigo
@@ -21,7 +25,8 @@ jobs:
 
       - name: Compilar proyecto
         run: mvn clean package -DskipTests
-        working-directory: test15b
+        
+      - name: Construir imagen Docker
+        run: docker build -t backend-spring .
 
-      - name: Construir imagenes Docker
-        run: docker compose build
+  
