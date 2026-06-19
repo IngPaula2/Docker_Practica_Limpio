@@ -26,6 +26,11 @@ public class testController {
 	public String test() {
 		return "Hola desde Ci";
 	}
+
+	@GetMapping(value="/tiapaola")
+	public String tia() {
+		return "Tia paola dijo una groseria";
+	}
 	
 	@GetMapping(value="/sumar")
     public int sumar(
