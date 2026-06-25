@@ -46,7 +46,7 @@ jobs:
    steps:
     - name:  Actualizar Contenedor Backend
       run: |
-        cd C:\Users\Admin\Downloads\proyecto_docker_compose_limpio\proyecto_docker_compose_limpio
+        cd C:\Users\itsva\OneDrive\Documentos\proyecto_docker_compose_limpio\proyecto_docker_compose_limpio
         docker compose pull backend
         docker compose up -d backend
       
