@@ -18,7 +18,7 @@ services:
 
   backend:
     build: ./test15b
-    image: ${DOCKER_USERNAME:-itsva}/backend-spring2:latest
+    image: ${DOCKER_USERNAME:-paulapachon22}/backend-spring2:latest
     container_name: backend-springboot
     ports:
       - "8091:8080"
@@ -32,7 +32,7 @@ services:
 
   frontend:
     build: ./frontend_test
-    image: ${DOCKER_USERNAME:-itsva}/test15b-frontend:latest
+    image: ${DOCKER_USERNAME:-paulapachon22}/test15b-frontend:latest
     container_name: frontend-nativo
     ports:
       - "8082:80"
